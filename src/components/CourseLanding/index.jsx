@@ -1,11 +1,10 @@
-import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import { Card, Image, Text, Button} from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setActiveCourse, addEnrolledCourse } from "../../store/actions";
+import { addEnrolledCourse } from "../../store/actions";
 
 const CourseLanding = () => {
   const { course } = useSelector((state) => state);
-  const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
   const lesson = course.activeCourse;
 
