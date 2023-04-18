@@ -1,9 +1,11 @@
 import { Card, Grid, Image, Tabs, Text } from "@mantine/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setActiveCourse } from "../../store/actions";
 
 const CourseList = () => {
   const { course } = useSelector((state) => state)
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -12,7 +14,7 @@ const CourseList = () => {
       <Tabs defaultValue="courses" orientation="vertical">
         <Tabs.List>
           {
-            course.map((lesson, idx) => (
+            course.courses.map((lesson, idx) => (
               <Tabs.Tab key={`cousre-${idx}`} value={lesson.courseName}>{lesson.courseName}</Tabs.Tab>
             ))
           }
@@ -21,15 +23,14 @@ const CourseList = () => {
       <Grid>
 
         {
-          course.map((lesson, idx) => {
-            let img = `https://source.unsplash.com/random?${lesson.courseName}`;
+          course.courses.map((lesson, idx) => {
             return (
-            <Grid.Col key={`cousre-${idx}`} md={6} lg={3}>
+            <Grid.Col key={`course-${idx}`} md={6} lg={3}>
               <Card
                 shadow="sm"
                 padding="xl"
-                component={Link} to="/"
-                target="_blank"
+                component={Link} to="/CourseLanding"
+                onClick={() => dispatch(setActiveCourse(lesson))}
               >
                 <Card.Section>
                   <Image
