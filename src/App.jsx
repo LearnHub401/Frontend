@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile";
 import Course from "./components/Course";
+import { withAuth0 } from '@auth0/auth0-react';
 
 
 function App() {
@@ -20,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuth0(App);

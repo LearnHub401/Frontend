@@ -2,6 +2,7 @@ import { Header, Burger, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import { Link } from "react-router-dom";
+import AuthButtons from "../AuthButton";
 
 const Headers = () => {
 
@@ -23,7 +24,7 @@ const Headers = () => {
             {/* make conditional saying if light mode then say dark mode and can switch to dark mode and vise versa */}
             <Menu.Item><Link to="/profile" >Profile</Link></Menu.Item>
             <Menu.Item>Dark/Light Mode</Menu.Item>
-            <Menu.Item color="red">Log Out</Menu.Item>
+            <Menu.Item color="red"> <AuthButtons/> </Menu.Item>
           </Menu.Dropdown>
         </Menu>
       </Header>
