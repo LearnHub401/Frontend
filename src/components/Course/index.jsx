@@ -1,5 +1,6 @@
 import { Tabs } from "@mantine/core";
 import { useSelector } from "react-redux";
+import Module from "../Module";
 
 const Course = () => {
   const { course } = useSelector((state) => state)
@@ -19,6 +20,7 @@ const Course = () => {
         <Tabs.Tab value="etc">etc...</Tabs.Tab>
       </Tabs.List>
       </Tabs>
+      <Module />
     </>
   )
 }

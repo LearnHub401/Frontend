@@ -3,19 +3,40 @@ let initialState = {
     owner: 'testid_martin',
     _id: 'uid',
     description: 'Learn Data',
+    activeIdx: 0, // in user for saved courses
     modules: [
       {
         name: 'Array',
-        idx: '1',
         lessonText: 'Youre dumb if you dont know what an array is',
-        lessonImg: 'str',
-        questions: [
+        lessonImg: 'https://placekitten.com/200/300',
+        question: 
           {
-            questionTxt: 'Q1',
+            questionText: 'Amazingly Awesome Arrays',
             answer: '2',
             answerArr: ['1', '2', '3', '4'],
           },
-        ],
+      },
+      {
+        name: 'String',
+        lessonText: 'Silly string is extremely flammable; avoid birthday candles',
+        lessonImg: 'https://placekitten.com/200/300',
+        question: 
+          {
+            questionText: 'Sandy Silly String',
+            answer: '3',
+            answerArr: ['1', '2', '3', '4'],
+          },
+      },
+      {
+        name: 'Object',
+        lessonText: 'Treat people like objects, they are NPCs',
+        lessonImg: 'https://placekitten.com/200/300',
+        question: 
+          {
+            questionText: 'Orange Obtuse Objects',
+            answer: '2',
+            answerArr: ['1', '2', '3', '4'],
+          },
       },
     ],
 }
