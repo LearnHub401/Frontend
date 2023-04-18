@@ -3,9 +3,12 @@ import LandingPage from "./components/LandingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile";
 import Course from "./components/Course";
+import CourseList from "./components/CourseList";
+import CourseLanding from "./components/CourseLanding";
 import { withAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 import { MantineProvider, ColorSchemeProvider} from '@mantine/core';
+
 
 function App() {
   const [colorScheme, setColorScheme] = useState('light');
