@@ -3,10 +3,10 @@ let initialState = {
   _id: 'testid',
   password: 'pass1234',
   email: 'marrtt1234@gmail.com',
-  courses: [
+  createdCourses: [
     'test course _id',
   ],
-  activeCourses: [
+  enrolledCourses: [
     {
       courseId: 'test course _id',
       complete: false,
@@ -15,9 +15,16 @@ let initialState = {
 }
 
 const userReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case 'Test':
       return state;
+    case 'addEnrolledCourse':
+      return {
+        ...state,
+        enrolledCourses: [...state.enrolledCourses, payload],
+      }
     default:
       return state;
   }
