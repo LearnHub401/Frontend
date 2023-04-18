@@ -1,23 +1,18 @@
-let initialState = {
-  userName: 'Martin Hansen',
-  _id: 'testid',
-  password: 'pass1234',
-  email: 'marrtt1234@gmail.com',
-  courses: [
-    'test course _id',
-  ],
-  activeCourses: [
-    {
-      courseId: 'test course _id',
-      complete: false,
-    }
-  ],
-}
+let initialState = {};
 
 const userReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+
   switch (action.type) {
-    case 'Test':
-      return state;
+    case 'SET-USER':
+      console.log('SET-USER', type);
+      initialState = payload
+      return payload
+    case 'addEnrolledCourse':
+      return {
+        ...state,
+        enrolledCourses: [...state.enrolledCourses, payload],
+      }
     default:
       return state;
   }
