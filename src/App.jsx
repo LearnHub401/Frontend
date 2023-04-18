@@ -5,6 +5,8 @@ import Profile from "./components/Profile";
 import Course from "./components/Course";
 import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
+import { withAuth0 } from '@auth0/auth0-react';
+
 
 
 function App() {
@@ -24,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuth0(App);
