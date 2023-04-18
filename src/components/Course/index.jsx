@@ -1,23 +1,28 @@
 import { Tabs } from "@mantine/core";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCourses } from "../../store/actions";
 
 const Course = () => {
   const { course } = useSelector((state) => state)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('useEffect');
+    dispatch(getCourses());
+  }, [dispatch]);
 
   return (
     <>
-    <h2>Course: {course.courseName}</h2>
-    {/* we will need to map through courses and make a Tabs.Tab for each course 'navigate' is how to use this with react router*/}
-    <Tabs defaultValue="courses" orientation="vertical">
-      <Tabs.List>
-        <Tabs.Tab value="Arrays">Arrays</Tabs.Tab>
-        <Tabs.Tab value="Trees">Trees</Tabs.Tab>
-        <Tabs.Tab value="Stack">Stack</Tabs.Tab>
-        <Tabs.Tab value="Queue">Queue</Tabs.Tab>
-        <Tabs.Tab value="Redux">Redux</Tabs.Tab>
-        <Tabs.Tab value="SQL">SQL</Tabs.Tab>
-        <Tabs.Tab value="etc">etc...</Tabs.Tab>
-      </Tabs.List>
+    <h1>courses</h1>
+      <Tabs defaultValue="courses" orientation="vertical">
+        <Tabs.List>
+          {course.map(((course) => {
+            return (
+              <Tabs.Tab value="Arrays">{course.courseName}</Tabs.Tab>
+            )
+          }))}
+        </Tabs.List>
       </Tabs>
     </>
   )

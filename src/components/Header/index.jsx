@@ -3,6 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthButtons from "../AuthButton";
+import Demo from "../dark";
 
 const Headers = () => {
 
@@ -13,6 +14,7 @@ const Headers = () => {
     <>
       <Header>
         <h1>Learn Hub</h1>
+        <Demo />
         <Menu shadow="md" width={200} transitionProps={{ transition: 'slide-right', duration: 500 }}>
           <Menu.Target>
             <Burger title="Settings" color="#fe6734" opened={opened} onClick={toggle} aria-label={label} />
