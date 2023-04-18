@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile";
 import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
+import Footer from "./components/Footer";
+import About from "./components/About";
+
 import { withAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 import { MantineProvider, ColorSchemeProvider} from '@mantine/core';
@@ -15,6 +18,7 @@ function App() {
     setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
 
   return (
+
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={
         {
@@ -42,7 +46,9 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/courses" element={<CourseList />} />
               <Route path="/courselanding" element={<CourseLanding />} />
+              <Route path="/about" element={<About />} />
             </Routes>
+             <Footer/>
           </BrowserRouter>
         </>
       </MantineProvider>

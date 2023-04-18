@@ -25,6 +25,7 @@ const Headers = () => {
             <Menu.Item><Link to="/"> Home</Link></Menu.Item>
             {/* make conditional saying if light mode then say dark mode and can switch to dark mode and vise versa */}
             <Menu.Item><Link to="/profile" >Profile</Link></Menu.Item>
+            <Menu.Item><Link to="/about" >About Us</Link></Menu.Item>
             <Menu.Item>Dark/Light Mode</Menu.Item>
             <Menu.Item color="red"> <AuthButtons/> </Menu.Item>
           </Menu.Dropdown>
