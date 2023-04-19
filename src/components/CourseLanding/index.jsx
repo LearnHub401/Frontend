@@ -9,7 +9,7 @@ const CourseLanding = () => {
 
   return (
     <>
-      {user && user.activeCourses.includes(course[0]._id) ? <Navigate to='/' replace /> :
+      {user && user.activeCourses.includes(course[0]._id) ? <Navigate to='/coursemodule' replace /> :
         <>
           <Card
             shadow="sm"
@@ -32,7 +32,7 @@ const CourseLanding = () => {
           </Card>
           <Button.Group>
             <Button variant="default" onClick={() => dispatch(addEnrolledCourse(course[0]._id, user.email))}>Add Course</Button>
-            <Button variant="default" content={Link}to="/">Start Course</Button>
+            <Button variant="default" content={Link} to="/coursemodule">Start Course</Button>
           </Button.Group>
         </>
       }
