@@ -39,7 +39,7 @@ const Profile = () => {
                 return <CourseCard course={temp[0]} idx={idx} />
               }
               return <></>
-            }) : <h3>Your not enrolled in any classes</h3>
+            }) : <h3>You're not enrolled in any classes</h3>
           }
           </Grid>
       </> : <AuthButtons />
