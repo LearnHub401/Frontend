@@ -1,25 +1,35 @@
-import Headers from "./components/Header";
+import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from "./components/Profile";
 import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
 import Footer from "./components/Footer";
 import About from "./components/About";
 
-import { withAuth0 } from '@auth0/auth0-react';
-import { useState } from 'react';
-import { MantineProvider, ColorSchemeProvider} from '@mantine/core';
-
-
+import { getCourses, getUser } from "./store/actions";
+import { useEffect, useState } from 'react';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [colorScheme, setColorScheme] = useState('light');
-  const toggleColorScheme = (ColorScheme) =>
-    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+  const toggleColorScheme = (ColorScheme) => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+  const { user, isAuthenticated } = useAuth0();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getUser({
+        userName: user.name,
+        email: user.email,
+      }));
+      dispatch(getCourses())
+    }
+  }, [dispatch, isAuthenticated, user])
 
   return (
-
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={
         {
@@ -57,11 +67,11 @@ function App() {
               },
             },
           },
-          
+
         }} withGlobalStyles withNormalizeCSS>
         <>
-          <BrowserRouter>
-            <Headers />
+          <Router>
+            <Header />
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/profile" element={<Profile />} />
@@ -69,12 +79,12 @@ function App() {
               <Route path="/courselanding" element={<CourseLanding />} />
               <Route path="/about" element={<About />} />
             </Routes>
-             <Footer/>
-          </BrowserRouter>
+            <Footer />
+          </Router>
         </>
       </MantineProvider>
     </ColorSchemeProvider>
   );
 }
 
-export default withAuth0(App);
+export default App;

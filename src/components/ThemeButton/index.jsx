@@ -1,6 +1,6 @@
 import { useMantineColorScheme, Button } from '@mantine/core';
 
-function Demo() {
+function ThemeButton() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
   const darkButton = {
@@ -24,4 +24,4 @@ function Demo() {
   );
 }
 
-export default Demo
+export default ThemeButton
