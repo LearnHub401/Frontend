@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { MantineProvider, ColorSchemeProvider} from '@mantine/core';
 
 
+
 function App() {
   const [colorScheme, setColorScheme] = useState('light');
   const toggleColorScheme = (ColorScheme) =>
@@ -27,16 +28,36 @@ function App() {
             dark: [
               '#31B073',
               '#194D34',
-              '#091C13',
               '#B2D1A7',
-              '#F5DDA2',
+              '#091C13',
               '#F7F1D0',
+              '#F5DDA2',
               '#9C676F',
+              '#01010a',
               '#29181B',
               '#0c0d21',
-              '#01010a',
             ],
-          }
+          },
+          components: {
+            Button: {
+              borderRadius: '4px',
+              padding: '8px 16px',
+              fontSize: '16px',
+              textTransform: 'uppercase',
+              fontWeight: 500,
+            },
+            appearances: {
+              default: {
+                backgroundColor: '#31B073',
+                textColor: 'white',
+                hover: {
+                  backgroundColor: '#194D34',
+                  textColor: 'white',
+                },
+              },
+            },
+          },
+          
         }} withGlobalStyles withNormalizeCSS>
         <>
           <BrowserRouter>
