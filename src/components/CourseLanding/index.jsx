@@ -31,8 +31,8 @@ const CourseLanding = () => {
             </Text>
           </Card>
           <Button.Group>
-            <Button variant="default" onClick={() => dispatch(addEnrolledCourse(course[0]._id, user.email))}>Add Course</Button>
-            <Button variant="default" content={Link} to="/coursemodule">Start Course</Button>
+            <Button variant="default" onClick={() => dispatch(addEnrolledCourse(course[0]._id, user.email))}>Start</Button>
+            {/* <Button variant="default" content={Link} to="/coursemodule">Start Course</Button> */}
           </Button.Group>
         </>
       }
