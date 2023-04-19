@@ -5,14 +5,8 @@ const userReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'SET-USER':
-      console.log('SET-USER', type);
       initialState = payload
       return payload
-    case 'addEnrolledCourse':
-      return {
-        ...state,
-        enrolledCourses: [...state.enrolledCourses, payload],
-      }
     default:
       return state;
   }

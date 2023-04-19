@@ -2,7 +2,6 @@ import axios from 'axios';
 
 //=============COURSE ACTIONS=============
 export const setCourses = (data) => {
-  console.log('setCourse');
   return {
     type: 'SET-COURSES',
     payload: data,
@@ -10,20 +9,19 @@ export const setCourses = (data) => {
 }
 
 export const getCourses = () => async (dispatch, getState) => {
-  console.log('getCourses');
   let response = await axios.get(`http://localhost:3001/course`);
   dispatch(setCourses(response.data));
 }
 
-export const focusCourse = (courseID) => {
+export const filterCourse = (data) => {
   return {
-    type: 'FOCUS-COURSES',
-    payload: courseID,
+    type: 'FILTER-COURSE',
+    payload: data,
   }
 }
+
 // =============USER ACTIONS=============
 export const setUser = (data) => {
-  console.log('setUser');
   return {
     type: 'SET-USER',
     payload: data,
@@ -31,7 +29,6 @@ export const setUser = (data) => {
 }
 
 export const getUser = (user) => async (dispatch, getState) => {
-  console.log('getUser');
   let response = await axios.get(`http://localhost:3001/user/${user.email}`);
   if (response.data === null){
     response = await axios.post('http://localhost:3001/user', user);
@@ -39,16 +36,14 @@ export const getUser = (user) => async (dispatch, getState) => {
   dispatch(setUser(response.data));
 }
 
-export const setActiveCourse = (data) => {
-  return {
-    type: 'setActiveCourse',
-    payload: data,
-  }
-}
-
-export const addEnrolledCourse = (course) => {
-  return {
-    type: 'addEnrolledCourse',
-    payload: course,
-  }
+export const addEnrolledCourse = (courseId, email) => async (dispatch, getState) => {
+  console.log('addEnrolledCourse');
+  let user = await axios.get(`http://localhost:3001/user/${email}`);
+  console.log(user.data)
+  console.log(courseId);
+  user.data.activeCourses.push(courseId);
+  console.log(user.data)
+  let response = await axios.put(`http://localhost:3001/user/${user.data._id}`, user.data);
+  console.log(response.data);
+  dispatch(setUser(response.data));
 }
