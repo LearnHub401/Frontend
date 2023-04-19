@@ -6,6 +6,7 @@ import AuthButtons from "../AuthButton";
 const Profile = () => {
 
   const { user, isAuthenticated } = useAuth0();
+  console.log(user);
 
   return (
     isAuthenticated && (

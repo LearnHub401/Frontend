@@ -31,7 +31,7 @@ export const setUser = (data) => {
 }
 
 export const getUser = (user) => async (dispatch, getState) => {
-  console.log('getUser');
+  console.log('getUser', user);
   let response = await axios.get(`http://localhost:3001/user/${user.email}`);
   if (response.data === null){
     response = await axios.post('http://localhost:3001/user', user);
@@ -46,9 +46,9 @@ export const setActiveCourse = (data) => {
   }
 }
 
-export const addEnrolledCourse = (course) => {
+export const addActiveCourse = (course) => {
   return {
-    type: 'addEnrolledCourse',
+    type: 'addActiveCourse',
     payload: course,
   }
 }

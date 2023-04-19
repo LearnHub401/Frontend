@@ -8,10 +8,11 @@ const userReducer = (state = initialState, action) => {
       console.log('SET-USER', type);
       initialState = payload
       return payload
-    case 'addEnrolledCourse':
+    case 'addActiveCourse':
+      console.log(state, 'addActiveCourse');
       return {
         ...state,
-        enrolledCourses: [...state.enrolledCourses, payload],
+        activeCourses: [ ...state.activeCourses, payload ],
       }
     default:
       return state;

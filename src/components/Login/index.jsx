@@ -6,7 +6,7 @@ import {faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <button onClick={() => loginWithRedirect()}>Log In <FontAwesomeIcon className="mx-2" icon={faRightFromBracket} size='lg'/></button>;
+  return <button onClick={() => loginWithRedirect()}>Log In<FontAwesomeIcon className="mx-2" icon={faRightFromBracket} size='lg'/></button>;
 };
 
 export default LoginButton;

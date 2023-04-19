@@ -6,6 +6,7 @@ import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import Module from "./components/Module";
 
 import { withAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
@@ -47,6 +48,7 @@ function App() {
               <Route path="/courses" element={<CourseList />} />
               <Route path="/courselanding" element={<CourseLanding />} />
               <Route path="/about" element={<About />} />
+              <Route path="/module" element={<Module />} />
             </Routes>
              <Footer/>
           </BrowserRouter>

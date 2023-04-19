@@ -1,19 +1,23 @@
-import { Card, Image, Text, Button} from "@mantine/core";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addEnrolledCourse } from "../../store/actions";
+import { Card, Image, Text, Button } from "@mantine/core";
+import { useDispatch, useSelector } from "react-redux";
+import { addActiveCourse } from "../../store/actions";
 
 const CourseLanding = () => {
-  const { course } = useSelector((state) => state);
+  const { course, user } = useSelector((state) => state);
   const dispatch = useDispatch();
+
   const lesson = course.activeCourse;
 
   const handleAddCourse = () => {
-    dispatch(
-      addEnrolledCourse({
-        courseId: lesson._id,
-        complete: false
-      }));
+    if (user._id) {
+      dispatch(
+        addActiveCourse({
+          courseId: lesson._id,
+          complete: false
+        })
+      );
+    }
   };
 
   return (
@@ -38,8 +42,19 @@ const CourseLanding = () => {
         </Text>
       </Card>
       <Button.Group>
-        <Button variant="default" onClick={() => handleAddCourse()}>Add Course</Button>
-        <Button variant="default" content={Link} to="/module">Start Course</Button>
+        <Button
+          variant="default"
+          onClick={() => handleAddCourse()}
+        >
+          Add Course
+        </Button>
+        <Button
+          variant="default"
+          component={Link} to="/Module"
+          onClick={() => handleAddCourse()}
+        >
+          Start Course
+        </Button>
       </Button.Group>
     </>
   )
