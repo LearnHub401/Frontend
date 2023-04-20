@@ -14,6 +14,7 @@ const CourseModule = () => {
 
   let answerResult = null;
   const module = course[0].modules[currentModule];
+  const CID = course[0]._id;
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -32,32 +33,43 @@ const CourseModule = () => {
         if (currentModule === (course[0].modules.length - 1)) {
           open();
           setCurrentModule('complete');
-          // STRETuser.activeCourses[find courseID] {courseID, index: currentModule, complete: true}
-        }
-        else {
+
+          localStorage.setItem(CID, JSON.stringify({
+            storedCurrentModule: 'complete',
+            storedCurrentQuestion: currentQuestion
+          }));
+        } else {
           setCurrentModule(currentModule + 1);
           setCurrentQuestion(0);
           setSelectedOption(null);
           answerResult = null;
-          // update  user.activeCourses[find courseID] {courseID, index: currentModule, complete: false}
+
+          localStorage.setItem(CID, JSON.stringify({
+            storedCurrentModule: currentModule + 1,
+            storedCurrentQuestion: 0
+          }));
         }
       }
       else {
         setCurrentQuestion(currentQuestion + 1);
         answerResult = null;
         setSelectedOption(null);
+
+        localStorage.setItem(CID, JSON.stringify({
+          storedCurrentModule: currentModule,
+          storedCurrentQuestion: currentQuestion + 1
+        }));
       }
     };
   }
 
   useEffect(() => {
-    console.log(course[0]._id);
-    // const { storedCurrentModule, storedCurrentQuestion} = JSON.parse(localStorage.getItem('courseProgress'));
-    // if (course) {
-    //   setCurrentModule(storedCurrentModule);
-    //   setCurrentQuestion(storedCurrentQuestion);
-    // }
-  }, []);
+    const courseProgress = JSON.parse(localStorage.getItem(CID));
+    if (courseProgress) {
+      setCurrentModule(courseProgress.storedCurrentModule);
+      setCurrentQuestion(courseProgress.storedCurrentQuestion);
+    }
+  }, [CID]);
 
   return (
     <>
