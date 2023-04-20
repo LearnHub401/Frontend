@@ -83,7 +83,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/ownedCourse" element={<OwnedCourse />} />
               <Route path="/courseForm" element={<CourseForm />} />
-              <Route path="/coursemodule" element={<CourseModule />} />
+              <Route path="/courseModule" element={<CourseModule />} />
             </Routes>
             <Footer />
           </Router>

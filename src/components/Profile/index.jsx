@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import CourseCard from "../CourseCard";
 import { useEffect } from "react";
 import { getCourses, getUser } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 
 const Profile = () => {
@@ -50,10 +51,10 @@ const Profile = () => {
                 return <CourseCard course={temp[0]} idx={idx} />
               }
               return <></>
-            }) : <h3>You Don't have any classes</h3>
+            }) : <h3>You don't have any courses</h3>
           }
           </Grid>
-          <Button></Button>
+          <Button><Link to="/courseForm" >Create Course</Link></Button>
       </> : <AuthButtons />)
   )
 }

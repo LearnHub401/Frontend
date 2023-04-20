@@ -51,24 +51,24 @@ const CourseModule = () => {
       <Card>
         <Card.Section>
           <Text>
-            {`${course[0].courseName}: ${module.name}`}
+            {`${course[0].courseName}: ${module?.name}`}
           </Text>
           <Image
-            src={module.Img}
+            src={module?.Img}
             height={160}
           />
           <Text mt="xs" color="dimmed" size="sm">
-            {module.lessonText}
+            {module?.lessonText}
           </Text>
         </Card.Section>
 
         <Card.Section>
-          {selectedOption && (module.questions[currentQuestion].answer === selectedOption ? <Badge color="green">CORRECT</Badge> : <Badge color="red">INCORRECT</Badge>)}
+          {selectedOption && (module?.questions[currentQuestion].answer === selectedOption ? <Badge color="green">CORRECT</Badge> : <Badge color="red">INCORRECT</Badge>)}
           <Text weight={500} size="lg" mt="md">
-            {module.questions[currentQuestion].questionTxt}
+            {module?.questions[currentQuestion].questionTxt}
           </Text>
           {
-            module.questions[currentQuestion].answerArr.map((answer, index) => (
+            module?.questions[currentQuestion].answerArr.map((answer, index) => (
               <Radio
                 key={index}
                 value={answer}
