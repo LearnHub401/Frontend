@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Card, Image, Radio, Text, Button, Badge, Modal, Group } from "@mantine/core";
-import React, { useState } from 'react';
+import { useSelector } from "react-redux";
+import { Card, Image, Radio, Text, Button, Badge, Modal } from "@mantine/core";
+import React, { useEffect, useState } from 'react';
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 
@@ -13,11 +13,17 @@ const CourseModule = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
   let answerResult = null;
-
   const module = course[0].modules[currentModule];
+  const CID = course[0]._id;
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
+  };
+
+  const handleRestartCourse = () => {
+    setSelectedOption(null);
+    setCurrentModule(0);
+    setCurrentQuestion(0);
   };
 
   const handleAnswerQuestion = () => {
@@ -25,50 +31,69 @@ const CourseModule = () => {
     if (answerResult) {
       if (currentQuestion === (module.questions.length - 1)) {
         if (currentModule === (course[0].modules.length - 1)) {
-          console.log('course complete');
           open();
-          // set active course complete
-          // user.activeCourses[find courseID] {courseID, index: currentModule, complete: true}
-        }
-        else {
+          setCurrentModule('complete');
+
+          localStorage.setItem(CID, JSON.stringify({
+            storedCurrentModule: 'complete',
+            storedCurrentQuestion: currentQuestion
+          }));
+        } else {
           setCurrentModule(currentModule + 1);
           setCurrentQuestion(0);
-          answerResult = null;
           setSelectedOption(null);
-          // update  user.activeCourses[find courseID] {courseID, index: currentModule, complete: false}
+          answerResult = null;
+
+          localStorage.setItem(CID, JSON.stringify({
+            storedCurrentModule: currentModule + 1,
+            storedCurrentQuestion: 0
+          }));
         }
       }
       else {
         setCurrentQuestion(currentQuestion + 1);
         answerResult = null;
         setSelectedOption(null);
+
+        localStorage.setItem(CID, JSON.stringify({
+          storedCurrentModule: currentModule,
+          storedCurrentQuestion: currentQuestion + 1
+        }));
       }
     };
   }
+
+  useEffect(() => {
+    const courseProgress = JSON.parse(localStorage.getItem(CID));
+    if (courseProgress) {
+      setCurrentModule(courseProgress.storedCurrentModule);
+      setCurrentQuestion(courseProgress.storedCurrentQuestion);
+    }
+  }, [CID]);
 
   return (
     <>
       <Card>
         <Card.Section>
           <Text>
-            {`${course[0].courseName}: ${module.name}`}
+            {`${course[0].courseName}: ${module?.name || 'complete'}`}
           </Text>
           <Image
-            src={module.Img}
+            src={module?.name || 'https://source.unsplash.com/random?complete'}
             height={160}
           />
           <Text mt="xs" color="dimmed" size="sm">
-            {module.lessonText}
+            {module?.name || 'Actually... your done with this course.'}
           </Text>
         </Card.Section>
 
         <Card.Section>
-          {selectedOption && (module.questions[currentQuestion].answer === selectedOption ? <Badge color="green">CORRECT</Badge> : <Badge color="red">INCORRECT</Badge>)}
+          {selectedOption && (module?.questions[currentQuestion].answer === selectedOption ? <Badge color="green">CORRECT</Badge> : <Badge color="red">INCORRECT</Badge>)}
           <Text weight={500} size="lg" mt="md">
-            {module.questions[currentQuestion].questionTxt}
+            {module?.questions[currentQuestion].questionTxt || 'There are no more questions.'}
           </Text>
           {
-            module.questions[currentQuestion].answerArr.map((answer, index) => (
+            module?.questions[currentQuestion].answerArr.map((answer, index) => (
               <Radio
                 key={index}
                 value={answer}
@@ -79,7 +104,7 @@ const CourseModule = () => {
               />
             ))
           }
-          <Button
+          { currentModule !== 'complete' ? <Button
             onClick={() => handleAnswerQuestion()}
             fullWidth
             size="xl"
@@ -87,7 +112,16 @@ const CourseModule = () => {
             style={{ marginTop: '1rem' }}
           >
             Submit
-          </Button>
+          </Button> : 
+          <Button
+          onClick={() => handleRestartCourse()}
+          fullWidth
+          size="xl"
+          style={{ marginTop: '1rem' }}
+        >
+          Restart Course
+        </Button>
+           }
         </Card.Section>
       </Card>
 
