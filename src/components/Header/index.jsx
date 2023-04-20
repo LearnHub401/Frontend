@@ -6,6 +6,7 @@ import AuthButtons from "../AuthButton";
 import ThemeButton from "../ThemeButton/index.jsx";
 import { withAuth0 } from "@auth0/auth0-react";
 import './styles.scss'
+import logo from '../../assets/logo-no-background.png'
 
 const Headers = () => {
 
@@ -15,12 +16,13 @@ const Headers = () => {
   return (
     <>
       <Header id="header">
-        <h1>Learn Hub</h1>
-        <Center style={{position:'absolute', right:'3%', top:'6%'}}>
+        {/* <h1>Learn Hub</h1> */}
+        <img src={logo} alt="learnHub logo" />
+        <Center style={{position:'absolute', right:'3%', top:'4%'}}>
 
         <Menu id="menu" shadow="md" width={200} onChange={e => setOpened(e)} transitionProps={{ transition: 'slide-left', duration: 500 }}>
           <Menu.Target>
-            <Burger id="burger" title="Settings" color="#fe6734" opened={opened} aria-label={label} />
+            <Burger id="burger" title="Settings" color="#fe6734" opened={opened} aria-label={label} size={'xl'} />
           </Menu.Target>
 
           <Menu.Dropdown>
