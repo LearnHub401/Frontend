@@ -14,6 +14,8 @@ import { useEffect, useState } from 'react';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
+import CourseForm from "./components/CourseForm";
+import OwnedCourse from "./components/OwnedCourse";
 
 function App() {
   const [colorScheme, setColorScheme] = useState('light');
@@ -27,7 +29,7 @@ function App() {
         userName: user.name,
         email: user.email,
       }));
-      dispatch(getCourses())
+      // dispatch(getCourses())
     }
   }, [dispatch, isAuthenticated, user])
 
@@ -90,9 +92,11 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/courses" element={<CourseList />} />
-              <Route path="/courselanding" element={<CourseLanding />} />
+              <Route path="/courseLanding" element={<CourseLanding />} />
               <Route path="/about" element={<About />} />
-              <Route path="/coursemodule" element={<CourseModule />} />
+              <Route path="/ownedCourse" element={<OwnedCourse />} />
+              <Route path="/courseForm" element={<CourseForm />} />
+              <Route path="/courseModule" element={<CourseModule />} />
             </Routes>
             <Footer />
           </Router>

@@ -9,10 +9,11 @@ const CourseCard = (props) => {
 
   return (
     <Grid.Col key={`course-${props.idx}`} md={6} lg={3}>
+      {}
       <Card
         shadow="sm"
         padding="xl"
-        component={Link} to="/CourseLanding"
+        component={Link} to="/courseLanding"
         onClick={() => dispatch(filterCourse(props.course._id))}
       >
         <Card.Section>

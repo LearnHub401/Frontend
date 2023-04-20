@@ -34,18 +34,17 @@ const Headers = () => {
           </Menu.Target>
 
           <Menu.Dropdown>
-            <ThemeButton />
-            <Menu.Label>Settings</Menu.Label>
+          <ThemeButton />
             <Navbar>
               <NavItem>
+                <Menu.Item component={Link} to="/">Home</Menu.Item>
+                <Menu.Item component={Link} to="/profile">Profile</Menu.Item>
+                <Menu.Item component={Link} to="/courses">Courses</Menu.Item>
+                <Menu.Item component={Link} to="/about">About Us</Menu.Item>
                 <Menu.Item component={Link} to="/"> Home</Menu.Item>
                 <Menu.Item component={Link} to="/profile">Profile</Menu.Item>
                 <Menu.Item component={Link} to="/courses">Courses</Menu.Item>
                 <Menu.Item component={Link} to="/about">About Us</Menu.Item>
-                {/* <Menu.Item component={Link} to="/"><Link to="/"> Home</Link></Menu.Item>
-                <Menu.Item><Link to="/profile" >Profile</Link></Menu.Item>
-                <Menu.Item><Link to="/courses" >Courses</Link></Menu.Item>
-                <Menu.Item><Link to="/about" >About Us</Link></Menu.Item> */}
                 <Menu.Item color="red"> <AuthButtons /> </Menu.Item>
               </NavItem>
             </Navbar>

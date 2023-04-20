@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Drawer, Button, Tabs, ActionIcon, createStyles, Container, Title, Text, rem } from "@mantine/core";
 import { useSelector, useDispatch } from "react-redux";
 import { filterCourse, getCourses } from "../../store/actions";
-
 import { useEffect } from "react";
 import { useDisclosure } from '@mantine/hooks';
 import { IconSquareChevronRight } from '@tabler/icons-react';
@@ -97,7 +96,6 @@ const LandingPage = () => {
 
   return (
     <>
-      
       <ActionIcon color="blue" size="xl" variant="subtle" onClick={open}>
         <IconSquareChevronRight size="3rem" />
       </ActionIcon>

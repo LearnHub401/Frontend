@@ -1,10 +1,11 @@
-import { Card, Text, Group, Grid } from "@mantine/core";
+import { Card, Text, Group, Grid, Button } from "@mantine/core";
 import AuthButtons from "../AuthButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import CourseCard from "../CourseCard";
 import { useEffect } from "react";
 import { getCourses, getUser } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 
 const Profile = () => {
@@ -20,8 +21,7 @@ const Profile = () => {
   }, [dispatch, user, isAuthenticated]);
 
   return (
-    (
-      isAuthenticated ?  
+      (isAuthenticated ?  
       <>
         <Card shadow="md" padding="lg" radius="md" style={{width: '20%', height: '20%' }} withBorder>
           <Text>{state.user.userName}</Text>
@@ -42,8 +42,20 @@ const Profile = () => {
             }) : <h3>You're not enrolled in any classes</h3>
           }
           </Grid>
-      </> : <AuthButtons />
-    )
+          <Grid>
+          {
+            state?.user?.courses?.length? 
+            state.user.courses.map((courseId, idx) => {
+              let temp = state.course.filter((item) => item._id === courseId);
+              if(temp.length){
+                return <CourseCard course={temp[0]} idx={idx} />
+              }
+              return <></>
+            }) : <h3>You don't have any courses</h3>
+          }
+          </Grid>
+          <Button component={Link} to="/courseForm">Create Course</Button>
+      </> : <AuthButtons />)
   )
 }
 
