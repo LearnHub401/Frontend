@@ -1,8 +1,14 @@
+import { Footer, Center } from "@mantine/core";
+import './styles.scss';
 
-const Footer = () => {
+const Footers = () => {
   return(
-    <h4>&copy;Learn Hub 401</h4>
+    <Footer id="footer">
+
+        <p id="copyright">&copy;Learn Hub 401</p>
+
+    </Footer>
   )
 }
 
-export default Footer;
+export default Footers;
