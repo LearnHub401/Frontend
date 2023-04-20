@@ -1,10 +1,11 @@
-import { Header, Burger, Menu } from "@mantine/core";
+import { Header, Burger, Menu, Center } from "@mantine/core";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, NavItem } from 'react-bootstrap';
 import AuthButtons from "../AuthButton";
 import ThemeButton from "../ThemeButton/index.jsx";
 import { withAuth0 } from "@auth0/auth0-react";
+import './styles.scss'
 
 const Headers = () => {
 
@@ -13,12 +14,13 @@ const Headers = () => {
 
   return (
     <>
-      <Header>
+      <Header id="header">
         <h1>Learn Hub</h1>
+        <Center style={{position:'absolute', right:'3%', top:'6%'}}>
 
-        <Menu shadow="md" width={200} onChange={e => setOpened(e)} transitionProps={{ transition: 'slide-right', duration: 500 }}>
+        <Menu id="menu" shadow="md" width={200} onChange={e => setOpened(e)} transitionProps={{ transition: 'slide-left', duration: 500 }}>
           <Menu.Target>
-            <Burger title="Settings" color="#fe6734" opened={opened} aria-label={label} />
+            <Burger id="burger" title="Settings" color="#fe6734" opened={opened} aria-label={label} />
           </Menu.Target>
 
           <Menu.Dropdown>
@@ -35,6 +37,7 @@ const Headers = () => {
             </Navbar>
           </Menu.Dropdown>
         </Menu>
+        </Center>
       </Header>
 
     </>

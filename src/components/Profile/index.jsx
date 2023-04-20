@@ -1,10 +1,12 @@
-import { Card, Text, Group, Grid } from "@mantine/core";
+import { Card, Text, Group, Grid, Center } from "@mantine/core";
+import { Image } from "react-bootstrap";
 import AuthButtons from "../AuthButton";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import CourseCard from "../CourseCard";
 import { useEffect } from "react";
 import { getCourses, getUser } from "../../store/actions";
+import './styles.scss'
 
 
 const Profile = () => {
@@ -23,13 +25,16 @@ const Profile = () => {
     (
       isAuthenticated ?  
       <>
-        <Card shadow="md" padding="lg" radius="md" style={{width: '20%', height: '20%' }} withBorder>
-          <Text>{state.user.userName}</Text>
-          <Text>{state.user.email}</Text>
+        <Center>
+        <Card shadow="md" padding="lg" radius="md" style={{width: '12%', height: '20%' }} withBorder>
+        <Image variant="top" src={user.picture} alt={user.name} style={{width:'100%'}}/>
+          <Text id="name">{state.user.userName}</Text>
+          <Text id="email">{state.user.email}</Text>
           <Group>
-            <AuthButtons/>
+            <AuthButtons id="authButton"/>
           </Group>
         </Card>
+        </Center>
         <Grid>
           {
             state?.user?.activeCourses?.length? 
@@ -39,7 +44,7 @@ const Profile = () => {
                 return <CourseCard course={temp[0]} idx={idx} />
               }
               return <></>
-            }) : <h3>You're not enrolled in any classes</h3>
+            }) : <h3 id="noClasses">You're not enrolled in any classes</h3>
           }
           </Grid>
       </> : <AuthButtons />

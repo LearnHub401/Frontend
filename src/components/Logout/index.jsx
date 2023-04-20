@@ -7,7 +7,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button style={{float:'right', margin:'2vw'}} onClick={() => logout({ returnTo: window.location.origin })}>
+    <button style={{ margin:'0.5vw'}} onClick={() => logout({ returnTo: window.location.origin })}>
       Log Out
       <FontAwesomeIcon className="mx-2" icon={faRightToBracket} size='lg'/>
     </button>

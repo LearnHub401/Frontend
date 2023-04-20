@@ -5,7 +5,7 @@ const LandingPage = () => {
 
   return(
     <>
-      <h1>Landing Page</h1>
+      <h1>Welcome to Learn Hub!</h1>
       <Link to="/courses">Explore Courses</Link>
 
       <Tabs defaultValue="courses" orientation="vertical">
