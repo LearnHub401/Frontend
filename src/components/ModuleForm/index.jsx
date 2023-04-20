@@ -1,6 +1,6 @@
-import { Box, Group, TextInput } from "@mantine/core"
+import { Textarea, Box, Group, TextInput, Button, Stack } from "@mantine/core"
 import { useForm } from "@mantine/form";
-import { Button } from "react-bootstrap"
+
 import { useDispatch, useSelector } from "react-redux";
 import { updateCourse } from "../../store/actions";
 
@@ -52,7 +52,7 @@ const ModuleForm = (props) => {
             placeholder="Module Name"
             {...form.getInputProps('name')}
           />
-          <TextInput
+          <Textarea
             label="Lesson Text"
             placeholder="Lesson"
             {...form.getInputProps('lessonText')}
@@ -67,33 +67,38 @@ const ModuleForm = (props) => {
             placeholder="question"
             {...form.getInputProps('questionTxt')}
           />
-          <TextInput
+          <Stack align= 'flex-end'>
+          <TextInput 
             label="Answers"
             placeholder="1st answer"
             {...form.getInputProps('answer1')}
           />
-          <TextInput
+          <TextInput 
             label="Answers"
             placeholder="2st answer"
             {...form.getInputProps('answer2')}
           />
-          <TextInput
+          <TextInput 
             label="Answers"
             placeholder="3st answer"
             {...form.getInputProps('answer3')}
           />
-          <TextInput
+          <TextInput 
             label="Answers"
             placeholder="4st answer"
             {...form.getInputProps('answer4')}
           />
-          <TextInput
+          <TextInput 
             label="Correct Answer"
             placeholder="Correct Answer"
             {...form.getInputProps('answer')}
           />
+          </Stack>
           <Group position="right" mt="md">
-            <Button type="submit">Submit</Button>
+            <Button variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size="md"
+              mt={40} type="submit">Submit</Button>
           </Group>
         </form>
       </Box>

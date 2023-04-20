@@ -35,6 +35,7 @@ const Profile = () => {
           </Group>
         </Card>
         </Center>
+        <Center>
         <Grid>
           {
             state?.user?.activeCourses?.length? 
@@ -47,6 +48,8 @@ const Profile = () => {
             }) : <h3 id="noClasses">You're not enrolled in any classes</h3>
           }
           </Grid>
+          </Center>
+          <Center>
           <Grid>
           {
             state?.user?.courses?.length? 
@@ -59,7 +62,13 @@ const Profile = () => {
             }) : <h3>You don't have any courses</h3>
           }
           </Grid>
-          <Button component={Link} to="/courseForm">Create Course</Button>
+          </Center>
+          <Center>
+          <Button variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size="md"
+              mt={40} component={Link} to="/courseForm">Create Course</Button>
+            </Center>
       </> : <AuthButtons />)
   )
 }
