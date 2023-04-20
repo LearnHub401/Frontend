@@ -11,12 +11,12 @@ const CourseList = () => {
   const dispatch = useDispatch();
   const [activePage, setPage] = useState(1);
 
-  const amountToDisplay = 12;
+  const amountToDisplay = 8;
 
   const courseToRender = course;
   const listStart = amountToDisplay * (activePage - 1);
   const listEnd = listStart + amountToDisplay;
-  // const pageCount = Math.ceil(courseToRender.length / amountToDisplay);
+  const pageCount = Math.ceil(courseToRender.length / amountToDisplay);
   const displayCourse = courseToRender.slice(listStart, listEnd);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const CourseList = () => {
         }
         <Grid.Col>
           <Center>
-            <Pagination value={activePage} onChange={setPage} total={3} style={{marginTop: '1rem'}}/>
+            <Pagination value={activePage} onChange={setPage} total={pageCount} style={{marginTop: '1rem'}}/>
           </Center>
         </Grid.Col>
 

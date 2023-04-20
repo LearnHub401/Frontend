@@ -79,7 +79,7 @@ const CourseModule = () => {
             {`${activeCourse.courseName}: ${module?.name || 'complete'}`}
           </Text>
           <Image
-            src={module?.imgUrl || 'https://source.unsplash.com/random?complete'}
+            src={module?.img_Url || 'https://source.unsplash.com/random?complete'}
             height={500}
           />
           <Text mt="xs" color="dimmed" size="sm">

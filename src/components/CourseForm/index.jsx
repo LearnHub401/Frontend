@@ -22,7 +22,7 @@ const CourseForm = (props) => {
     initialValues: {
       courseName: '',
       description: '',
-      imgUrl: '',
+      img_Url: '',
     },
     validate: {
       courseName: (value) => (value.length < 1 ? 'Required' : null),
@@ -57,7 +57,7 @@ const CourseForm = (props) => {
           <TextInput
             label="Image"
             placeholder="Image URL"
-            {...form.getInputProps('imgUrl')}
+            {...form.getInputProps('img_Url')}
           />
           <Group position="right" mt="md">
             <Button 

@@ -17,7 +17,7 @@ export const getCourses = () => async (dispatch, getState) => {
 export const addCourse = (course, email) => async (dispatch, getState) => {
   let newCourse = await axios.post(`${apiServer}/course`, course);
   dispatch(addCourseToUser(newCourse.data._id, email))
-  dispatch(setCourses([newCourse.data]));
+  dispatch(filterCourse(newCourse.data));
 }
 
 export const updateCourse = (course_id, course) => async (dispatch, getState) => {
