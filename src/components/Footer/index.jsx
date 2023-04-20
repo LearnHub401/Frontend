@@ -1,4 +1,4 @@
-import { Footer, Center } from "@mantine/core";
+import { Footer } from "@mantine/core";
 import './styles.scss';
 
 const Footers = () => {

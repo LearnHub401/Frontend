@@ -1,4 +1,4 @@
-import { Header, Burger, Menu, Center, createStyles } from "@mantine/core";
+import { Header, Burger, Menu, Center } from "@mantine/core";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, NavItem } from 'react-bootstrap';
@@ -6,22 +6,11 @@ import AuthButtons from "../AuthButton";
 import ThemeButton from "../ThemeButton/index.jsx";
 import { withAuth0 } from "@auth0/auth0-react";
 import './styles.scss'
-import logo from '../../assets/logo-no-background.png'
-
-const useStyles = createStyles(() => ({
-  image: {
-    display: 'block',
-    height: '100px',
-    // marginRight: 'auto',
-    // marginLeft: 'auto'
-  }
-}));
 
 const Headers = () => {
 
   const [opened, setOpened] = useState(false);
   const label = opened ? 'Close navigation' : 'Open navigation';
-  const { classes } = useStyles();
 
   return (
     <>

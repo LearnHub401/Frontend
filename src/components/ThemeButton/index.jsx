@@ -3,7 +3,6 @@ import { useMantineColorScheme, Button } from '@mantine/core';
 function ThemeButton() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
-  const light = colorScheme === 'light';
   
   const darkButton = {
     backgroundColor: '#31B073',
