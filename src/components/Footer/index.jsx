@@ -4,9 +4,7 @@ import './styles.scss';
 const Footers = () => {
   return(
     <Footer id="footer">
-
         <p id="copyright">&copy;Learn Hub 401</p>
-
     </Footer>
   )
 }

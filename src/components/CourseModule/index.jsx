@@ -80,7 +80,7 @@ const CourseModule = () => {
           </Text>
           <Image
             src={module?.imgUrl || 'https://source.unsplash.com/random?complete'}
-            height={160}
+            height={500}
           />
           <Text mt="xs" color="dimmed" size="sm">
             {module?.name || 'Actually... your done with this course.'}

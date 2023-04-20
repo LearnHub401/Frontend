@@ -31,10 +31,14 @@ const CourseLanding = () => {
                 {activeCourse.description}
               </Text>
             </Card>
-            <Button.Group>
-              <Button variant="default" onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button>
-              {/* <Button variant="default" content={Link} to="/coursemodule">Start Course</Button> */}
-            </Button.Group>
+            <Button
+              variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size={69}
+              mt={40}
+              radius={16}
+              sx={{ paddingLeft: '4rem', paddingRight: '4rem'}}
+              onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button>
           </>
       }
     </>

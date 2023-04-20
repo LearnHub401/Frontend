@@ -59,7 +59,12 @@ const OwnedCourse = () => {
               </Card>
             )
           })}
-          {moduleToggle ? <ModuleForm setModuleToggle={setModuleToggle} /> : <Button onClick={setModuleToggle}>Add Module</Button>}
+          {moduleToggle ? <ModuleForm setModuleToggle={setModuleToggle} /> :
+            <Button
+              variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size="xl"
+              mt={40} onClick={setModuleToggle}>Add Module</Button>}
         </> : user?.activeCourses?.includes(activeCourse._id) ? <Navigate to='/courseModule' replace /> : <Navigate to='/' replace />
       }
     </>
