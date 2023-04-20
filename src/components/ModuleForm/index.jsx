@@ -1,4 +1,4 @@
-import { Textarea, Box, Group, TextInput, Button, Stack } from "@mantine/core"
+import { Textarea, Box, Group, TextInput, Button, Stack, Text } from "@mantine/core"
 import { useForm } from "@mantine/form";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -67,33 +67,30 @@ const ModuleForm = (props) => {
             placeholder="question"
             {...form.getInputProps('questionTxt')}
           />
-          <Stack align= 'flex-end'>
+          <Stack align= 'start'>
+            <Text>Answers:</Text>
           <TextInput 
-            label="Answers"
             placeholder="1st answer"
             {...form.getInputProps('answer1')}
           />
           <TextInput 
-            label="Answers"
             placeholder="2st answer"
             {...form.getInputProps('answer2')}
           />
           <TextInput 
-            label="Answers"
             placeholder="3st answer"
             {...form.getInputProps('answer3')}
           />
           <TextInput 
-            label="Answers"
             placeholder="4st answer"
             {...form.getInputProps('answer4')}
           />
+          </Stack>
           <TextInput 
             label="Correct Answer"
             placeholder="Correct Answer"
             {...form.getInputProps('answer')}
           />
-          </Stack>
           <Group position="right" mt="md">
             <Button variant="gradient"
               gradient={{ from: 'pink', to: 'yellow' }}
