@@ -18,7 +18,6 @@ const CourseList = () => {
   const listEnd = listStart + amountToDisplay;
   // const pageCount = Math.ceil(courseToRender.length / amountToDisplay);
   const displayCourse = courseToRender.slice(listStart, listEnd);
-  console.log(displayCourse);
 
   useEffect(() => {
     dispatch(getCourses());
@@ -31,7 +30,6 @@ const CourseList = () => {
 
         {
           displayCourse.map((course, idx) => {
-            console.log('Display Course', course)
             return (
               <CourseCard key={idx} course={course} idx={idx}/>
             );
