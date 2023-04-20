@@ -19,22 +19,23 @@ const CourseLanding = () => {
               <Card.Section>
                 <Image
                   src={`https://source.unsplash.com/random?${activeCourse.courseName}`}
-                  height={160}
+                  height={800}
                 />
               </Card.Section>
 
-              <Text weight={500} size="lg" mt="md">
+              <Text weight={500} size={60} mt="md">
                 {activeCourse.courseName}
               </Text>
-            <Text mt="xs" color="dimmed" size="sm">
-              {activeCourse.description}
-            </Text>
-          </Card>
-          <Button.Group>
-            <Button variant="default" onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button>
-            {/* <Button variant="default" content={Link} to="/coursemodule">Start Course</Button> */}
-          </Button.Group>
-        </>
+
+              <Text mt="xs" color="dimmed" size={30}>
+                {activeCourse.description}
+              </Text>
+            </Card>
+            <Button.Group>
+              <Button variant="default" onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button>
+              {/* <Button variant="default" content={Link} to="/coursemodule">Start Course</Button> */}
+            </Button.Group>
+          </>
       }
     </>
   )

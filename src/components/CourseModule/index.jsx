@@ -79,11 +79,14 @@ const CourseModule = () => {
             {`${activeCourse.courseName}: ${module?.name || 'complete'}`}
           </Text>
           <Image
-            src={module?.name || 'https://source.unsplash.com/random?complete'}
+            src={module?.imgUrl || 'https://source.unsplash.com/random?complete'}
             height={160}
           />
           <Text mt="xs" color="dimmed" size="sm">
             {module?.name || 'Actually... your done with this course.'}
+          </Text>
+          <Text>
+            {module?.lessonText}
           </Text>
         </Card.Section>
 
