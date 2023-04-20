@@ -84,7 +84,7 @@ const CourseModule = () => {
               height={160}
             />
             <Text mt="xs" color="dimmed" size="sm">
-              {module?.name || 'Actually... your done with this course.'}
+              {module?.name || 'COURSE COMPLETE'}
             </Text>
           </Card.Section>
 
