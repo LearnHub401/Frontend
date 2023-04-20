@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
-import { Tabs } from "@mantine/core";
+// import { Link } from "react-router-dom";
+// import { Tabs } from "@mantine/core";
+
+import CourseForm from "../CourseForm";
 
 const LandingPage = () => {
 
   return(
     <>
-      <h1>Landing Page</h1>
+      <CourseForm />
+      {/* <h1>Landing Page</h1>
       <Link to="/courses">Explore Courses</Link>
 
       <Tabs defaultValue="courses" orientation="vertical">
@@ -18,7 +21,7 @@ const LandingPage = () => {
         <Tabs.Tab value="SQL">SQL</Tabs.Tab>
         <Tabs.Tab value="etc">etc...</Tabs.Tab>
       </Tabs.List>
-      </Tabs>
+      </Tabs> */}
     </>
   )
 }

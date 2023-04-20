@@ -9,32 +9,33 @@ const CourseLanding = () => {
 
   return (
     <>
-      {user && user.activeCourses.includes(course[0]._id) ? <Navigate to='/' replace /> :
-        <>
-          <Card
-            shadow="sm"
-            padding="xl"
-          >
-            <Card.Section>
-              <Image
-                src={`https://source.unsplash.com/random?${course[0].courseName}`}
-                height={160}
-              />
-            </Card.Section>
+      {course[0]?.owner_id === user?._id ? <Navigate to='/ownedCourse' replace /> :
+        user?.activeCourses?.includes(course[0]._id) ? <Navigate to='/' replace /> :
+          <>
+            <Card
+              shadow="sm"
+              padding="xl"
+            >
+              <Card.Section>
+                <Image
+                  src={`https://source.unsplash.com/random?${course[0].courseName}`}
+                  height={160}
+                />
+              </Card.Section>
 
-            <Text weight={500} size="lg" mt="md">
-              {course[0].courseName}
-            </Text>
+              <Text weight={500} size="lg" mt="md">
+                {course[0].courseName}
+              </Text>
 
-            <Text mt="xs" color="dimmed" size="sm">
-              {course[0].description}
-            </Text>
-          </Card>
-          <Button.Group>
-            <Button variant="default" onClick={() => dispatch(addEnrolledCourse(course[0]._id, user.email))}>Add Course</Button>
-            <Button variant="default" content={Link}to="/">Start Course</Button>
-          </Button.Group>
-        </>
+              <Text mt="xs" color="dimmed" size="sm">
+                {course[0].description}
+              </Text>
+            </Card>
+            <Button.Group>
+              <Button variant="default" onClick={() => dispatch(addEnrolledCourse(course[0]._id, user.email))}>Add Course</Button>
+              <Button variant="default" content={Link} to="/">Start Course</Button>
+            </Button.Group>
+          </>
       }
     </>
   )
