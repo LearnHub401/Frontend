@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -49,6 +50,18 @@ function App() {
               '#01010a',
               '#29181B',
               '#0c0d21',
+            ],
+            light: [
+              '#F8EBF4', 
+              '#D6E1E6', 
+              '#4D294A', 
+              '#EEECEB', 
+              '#0E2D25', 
+              '#0E4D25', 
+              '#736989', 
+              '#F5F5FA', 
+              '#D7D6D9', 
+              '#F0F0F6',
             ],
           },
           components: {

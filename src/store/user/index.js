@@ -1,6 +1,8 @@
 let initialState = {};
 
 const userReducer = (state = initialState, action) => {
+  
+  // eslint-disable-next-line no-unused-vars
   const { type, payload } = action;
 
   switch (action.type) {
