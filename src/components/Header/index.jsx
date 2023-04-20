@@ -41,10 +41,6 @@ const Headers = () => {
                 <Menu.Item component={Link} to="/profile">Profile</Menu.Item>
                 <Menu.Item component={Link} to="/courses">Courses</Menu.Item>
                 <Menu.Item component={Link} to="/about">About Us</Menu.Item>
-                <Menu.Item component={Link} to="/"> Home</Menu.Item>
-                <Menu.Item component={Link} to="/profile">Profile</Menu.Item>
-                <Menu.Item component={Link} to="/courses">Courses</Menu.Item>
-                <Menu.Item component={Link} to="/about">About Us</Menu.Item>
                 <Menu.Item color="red"> <AuthButtons /> </Menu.Item>
               </NavItem>
             </Navbar>

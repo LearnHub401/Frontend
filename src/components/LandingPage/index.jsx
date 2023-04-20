@@ -108,7 +108,7 @@ const LandingPage = () => {
                 return (
                   <Tabs.Tab
                     key={idx}
-                    component={Link} to="/courselanding"
+                    component={Link} to="/courseLanding"
                     value={course.courseName}
                     onClick={() => dispatch(filterCourse(course._id))}
                   >
