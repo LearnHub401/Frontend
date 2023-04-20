@@ -33,11 +33,10 @@ const CourseForm = (props) => {
 
   const handleSubmit = (values) => {
     if (state.course?.length < 1){
-      dispatch(updateCourse(state.course[0]._id, values));
+      dispatch(updateCourse(state.activeCourse._id, values));
     } else {
       dispatch(addCourse({...values, owner_id: state.user._id }, state.user.email))
     }
-    console.log('course from form', state.course );
     navigate("/ownedCourse");
   }
 

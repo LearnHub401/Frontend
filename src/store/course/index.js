@@ -6,8 +6,8 @@ const courseReducer = (state = initialState, action) => {
     case 'SET-COURSES':
       initialState = payload
       return payload
-    case 'FILTER-COURSE':
-      return state.filter(e => e._id === payload)
+    // case 'FILTER-COURSE':
+    //   return state.filter(e => e._id === payload)
     default:
       return state;
   }

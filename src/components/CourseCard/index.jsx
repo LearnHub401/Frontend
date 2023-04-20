@@ -14,7 +14,7 @@ const CourseCard = (props) => {
         shadow="sm"
         padding="xl"
         component={Link} to="/courseLanding"
-        onClick={() => dispatch(filterCourse(props.course._id))}
+        onClick={() => dispatch(filterCourse(props.course))}
       >
         <Card.Section>
           <Image

@@ -5,13 +5,12 @@ import { Navigate } from "react-router-dom";
 import ModuleForm from "../ModuleForm";
 
 const OwnedCourse = () => {
-  const { course, user } = useSelector((state) => state);
-  const [ moduleToggle, setModuleToggle ] = useToggle([ false, true]);
-
+  const { activeCourse, user } = useSelector((state) => state);
+  const [moduleToggle, setModuleToggle] = useToggle([false, true]);
+  
   return (
-    course?.length === 1 && (
       <>
-        {course[0]?.owner_id === user?._id ?
+        {activeCourse?.owner_id === user?._id ?
           <>
             <h1>Owned Courses</h1>
             <Card
@@ -20,20 +19,20 @@ const OwnedCourse = () => {
             >
               <Card.Section>
                 <Image
-                  src={`https://source.unsplash.com/random?${course[0].courseName}`}
+                  src={`https://source.unsplash.com/random?${activeCourse.courseName}`}
                   height={160}
                 />
               </Card.Section>
 
               <Text weight={500} size="lg" mt="md">
-                {course[0].courseName}
+                {activeCourse.courseName}
               </Text>
 
               <Text mt="xs" color="dimmed" size="sm">
-                {course[0].description}
+                {activeCourse.description}
               </Text>
             </Card>
-            {course[0].modules?.map((module) => {
+            {activeCourse.modules?.map((module) => {
               return (
                 <Card>
                   <Text weight={500} size="lg" mt="md">
@@ -48,7 +47,7 @@ const OwnedCourse = () => {
                         <Text>
                           <p>Question: {question.questionTxt}</p>
                           <p>Answer: {question.answer}</p>
-                          <p>Answers: {question.answerArr}</p>
+                          <p>Answers: {question.answerArr.map(elem => <p>{elem}</p>)}</p>
                         </Text>
                       </Card>
                     )
@@ -57,11 +56,10 @@ const OwnedCourse = () => {
                 </Card>
               )
             })}
-            {moduleToggle? <ModuleForm /> : <Button onClick={setModuleToggle}>Add Module</Button>}
-          </> : user?.activeCourses?.includes(course[0]._id) ? <Navigate to='/courseModule' replace /> : <Navigate to='/' replace />
+            {moduleToggle ? <ModuleForm setModuleToggle={setModuleToggle} /> : <Button onClick={setModuleToggle}>Add Module</Button>}
+          </> : user?.activeCourses?.includes(activeCourse._id) ? <Navigate to='/courseModule' replace /> : <Navigate to='/' replace />
         }
       </>
-    )
   )
 }
 

@@ -6,7 +6,7 @@ import { updateCourse } from "../../store/actions";
 
 const ModuleForm = (props) => {
   const dispatch = useDispatch();
-  const { course } = useSelector(((state) => state));
+  const { activeCourse } = useSelector(((state) => state));
 
   const form = useForm({
     initialValues: {
@@ -14,7 +14,10 @@ const ModuleForm = (props) => {
       lessonText: '',
       imgUrl: '',
       questionTxt: '',
-      answerArr: '',
+      answer1: '',
+      answer2: '',
+      answer3: '',
+      answer4: '',
       answer: '',
     },
     validate: {
@@ -23,10 +26,27 @@ const ModuleForm = (props) => {
     },
   });
 
+  const handleSubmit = (values) => {
+    dispatch(updateCourse(activeCourse._id,
+      {
+        ...activeCourse, modules: [...activeCourse.modules, {
+          name: values.name,
+          lessonText: values.lessonText,
+          imgUrl: values.imgUrl,
+          questions: [{
+            questionTxt: values.questionTxt,
+            answer: values.answer,
+            answerArr: [values.answer1, values.answer2, values.answer3, values.answer4]
+          }]
+        }]
+      }
+    ))
+    props.setModuleToggle();
+  }
   return (
     <>
       <Box maw={300} mx="auto">
-        <form onSubmit={form.onSubmit((values) => { dispatch(updateCourse(course[0]._id, {...course[0], modules: [...course[0].modules, {name: values.name, lessonText: values.lessonText, imgUrl: values.imgUrl, questions: [{questionTxt: values.questionTxt, answer: values.answer, answerArr: values.answerArr.split(' ')}]}]}))})}>
+        <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
           <TextInput
             label="Module Name"
             placeholder="Module Name"
@@ -49,8 +69,23 @@ const ModuleForm = (props) => {
           />
           <TextInput
             label="Answers"
-            placeholder="List of Answers"
-            {...form.getInputProps('answerArr')}
+            placeholder="1st answer"
+            {...form.getInputProps('answer1')}
+          />
+          <TextInput
+            label="Answers"
+            placeholder="2st answer"
+            {...form.getInputProps('answer2')}
+          />
+          <TextInput
+            label="Answers"
+            placeholder="3st answer"
+            {...form.getInputProps('answer3')}
+          />
+          <TextInput
+            label="Answers"
+            placeholder="4st answer"
+            {...form.getInputProps('answer4')}
           />
           <TextInput
             label="Correct Answer"

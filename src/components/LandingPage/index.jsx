@@ -110,7 +110,7 @@ const LandingPage = () => {
                     key={idx}
                     component={Link} to="/courseLanding"
                     value={course.courseName}
-                    onClick={() => dispatch(filterCourse(course._id))}
+                    onClick={() => dispatch(filterCourse(course))}
                   >
                     {course.courseName}
                   </Tabs.Tab>
