@@ -34,7 +34,7 @@ const CourseList = () => {
         {
           displayCourse.map((course, idx) => {
             return (
-              <CourseCard course={course} idx={idx} />
+              <CourseCard key={idx} course={course} idx={idx}/>
             );
           })
         }

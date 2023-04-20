@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,14 +15,10 @@ root.render(
       redirectUri={process.env.REACT_APP_AUTH_REDIRECT_URI}
     >
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </Auth0Provider>
   </React.StrictMode>
 );
-
-// basic user
-// display user
-// auth
-// lesson
-// installs
