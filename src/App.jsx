@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from "./components/Profile";
 import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
-import Footer from "./components/Footer";
+import Footers from "./components/Footer";
 import About from "./components/About";
 import CourseModule from "./components/CourseModule";
 
@@ -98,7 +98,7 @@ function App() {
               <Route path="/courseForm" element={<CourseForm />} />
               <Route path="/courseModule" element={<CourseModule />} />
             </Routes>
-            <Footer />
+            <Footers />
           </Router>
         </>
       </MantineProvider>

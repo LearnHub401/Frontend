@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
-import { Card, Grid, Image, Text } from "@mantine/core";
+import { Card, Grid, Image, Text} from "@mantine/core";
 import { useDispatch } from "react-redux";
 import { filterCourse } from "../../store/actions";
+
 
 
 const CourseCard = (props) => {
   const dispatch = useDispatch();
 
+
   return (
-    <Grid.Col key={`course-${props.idx}`} md={6} lg={3}>
-      {}
+    <>
+    <Grid.Col key={`course-${props.idx}`} md={6} lg={3} style={{marginTop: '2rem'}}>
       <Card
         shadow="sm"
         padding="xl"
-        component={Link} to="/courseLanding"
-        onClick={() => dispatch(filterCourse(props.course))}
+        component={Link} to="/CourseLanding"
+        onClick={() => dispatch(filterCourse(props.course._id))}
+        style={{width: '92%'}}
       >
         <Card.Section>
           <Image
@@ -32,6 +35,7 @@ const CourseCard = (props) => {
         </Text>
       </Card>
     </Grid.Col>
+    </>
   )
 }
 

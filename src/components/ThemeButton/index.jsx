@@ -4,7 +4,7 @@ import { IconMoon, IconSun } from '@tabler/icons-react';
 function ThemeButton() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
-  const light = colorScheme === 'light';
+
 
   const darkButton = {
     backgroundColor: '#31B073',
