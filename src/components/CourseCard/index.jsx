@@ -7,7 +7,7 @@ import { filterCourse } from "../../store/actions";
 
 const CourseCard = (props) => {
   const dispatch = useDispatch();
-
+  console.log('COURSE CARD', props.course);
 
   return (
     <>
@@ -16,7 +16,7 @@ const CourseCard = (props) => {
         shadow="sm"
         padding="xl"
         component={Link} to="/CourseLanding"
-        onClick={() => dispatch(filterCourse(props.course._id))}
+        onClick={() => dispatch(filterCourse(props.course))}
         style={{width: '92%'}}
       >
         <Card.Section>

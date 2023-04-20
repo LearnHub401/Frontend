@@ -15,12 +15,10 @@ const CourseList = () => {
 
   const courseToRender = course;
   const listStart = amountToDisplay * (activePage - 1);
-  console.log(listStart)
   const listEnd = listStart + amountToDisplay;
-  console.log(listEnd)
-  const pageCount = Math.ceil(courseToRender.length / amountToDisplay);
-  console.log('pageCount', pageCount);
+  // const pageCount = Math.ceil(courseToRender.length / amountToDisplay);
   const displayCourse = courseToRender.slice(listStart, listEnd);
+  console.log(displayCourse);
 
   useEffect(() => {
     dispatch(getCourses());
@@ -33,6 +31,7 @@ const CourseList = () => {
 
         {
           displayCourse.map((course, idx) => {
+            console.log('Display Course', course)
             return (
               <CourseCard key={idx} course={course} idx={idx}/>
             );
