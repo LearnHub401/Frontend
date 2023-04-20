@@ -47,7 +47,7 @@ Ability to moderate (ban users), "teacher vs student" view, chat between users a
 
 ## Data Flow
 
-[UML](./assets/Learnhub.png)
+[UML](./public/LearnhubUML.png)
 
 A user signs in through our web client, authentication is done on the backend and allows user access to requested assets associated with their account, assets are retrieved from the database and sent to the frontend client, the client renders and allows a user to interact with the content, and user data is updated to account for progress/creation of courses.
 
