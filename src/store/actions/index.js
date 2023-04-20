@@ -15,18 +15,14 @@ export const getCourses = () => async (dispatch, getState) => {
 }
 
 export const addCourse = (course, email) => async (dispatch, getState) => {
-  console.log('add course', course)
   let newCourse = await axios.post(`${apiServer}/course`, course);
-  dispatch(getCourses());
   dispatch(addCourseToUser(newCourse.data._id, email))
-  dispatch(filterCourse(newCourse.data));
+  dispatch(setCourses([newCourse.data]));
 }
 
 export const updateCourse = (course_id, course) => async (dispatch, getState) => {
-  console.log('update course', course)
-  let newCourse = await axios.put(`${apiServer}/course/${course_id}`, course);
+  await axios.put(`${apiServer}/course/${course_id}`, course);
   dispatch(getCourses());
-  dispatch(filterCourse(newCourse.data));
 }
 
 export const filterCourse = (data) => {

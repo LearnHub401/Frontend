@@ -21,9 +21,9 @@ const CourseForm = (props) => {
 
   const form = useForm({
     initialValues: {
-      courseName: state.course[0]?.courseName || '',
-      description: state.course[0]?.description ||'',
-      imgUrl: state.course[0]?.imgUrl || '',
+      courseName: '',
+      description: '',
+      imgUrl: '',
     },
     validate: {
       courseName: (value) => (value.length < 1 ? 'Required' : null),
@@ -35,9 +35,9 @@ const CourseForm = (props) => {
     if (state.course?.length < 1){
       dispatch(updateCourse(state.course[0]._id, values));
     } else {
-      dispatch(addCourse({...values, owner_id: state.user._id}, state.user.email))
+      dispatch(addCourse({...values, owner_id: state.user._id }, state.user.email))
     }
-    console.log(state.user);
+    console.log('course from form', state.course );
     navigate("/ownedCourse");
   }
 
@@ -66,8 +66,6 @@ const CourseForm = (props) => {
           </Group>
         </form>
       </Box>
-      <h1>{JSON.stringify(state.user)}</h1>
-      <h1>{JSON.stringify(state.course)}</h1>
       </>: <h3>Not Authenticated</h3>)
   )
 }

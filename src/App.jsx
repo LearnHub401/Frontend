@@ -29,7 +29,7 @@ function App() {
         userName: user.name,
         email: user.email,
       }));
-      dispatch(getCourses())
+      // dispatch(getCourses())
     }
   }, [dispatch, isAuthenticated, user])
 

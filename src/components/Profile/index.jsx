@@ -54,7 +54,7 @@ const Profile = () => {
             }) : <h3>You don't have any courses</h3>
           }
           </Grid>
-          <Button><Link to="/courseForm" >Create Course</Link></Button>
+          <Button component={Link} to="/courseForm">Create Course</Button>
       </> : <AuthButtons />)
   )
 }
