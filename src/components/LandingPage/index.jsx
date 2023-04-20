@@ -1,27 +1,37 @@
-// import { Link } from "react-router-dom";
-// import { Tabs } from "@mantine/core";
-
-import CourseForm from "../CourseForm";
+import { Link } from "react-router-dom";
+import { Tabs } from "@mantine/core";
+import { useSelector, useDispatch } from "react-redux";
+import { filterCourse, getCourses } from "../../store/actions";
+import { useEffect } from "react";
 
 const LandingPage = () => {
+  const { course } = useSelector((state) => state)
+  const dispatch = useDispatch();
 
-  return(
+  useEffect(() => {
+    dispatch(getCourses());
+  }, [dispatch]);
+
+  return (
     <>
-      <CourseForm />
-      {/* <h1>Landing Page</h1>
-      <Link to="/courses">Explore Courses</Link>
-
       <Tabs defaultValue="courses" orientation="vertical">
-      <Tabs.List>
-        <Tabs.Tab value="Arrays">Arrays</Tabs.Tab>
-        <Tabs.Tab value="Trees">Trees</Tabs.Tab>
-        <Tabs.Tab value="Stack">Stack</Tabs.Tab>
-        <Tabs.Tab value="Queue">Queue</Tabs.Tab>
-        <Tabs.Tab value="Redux">Redux</Tabs.Tab>
-        <Tabs.Tab value="SQL">SQL</Tabs.Tab>
-        <Tabs.Tab value="etc">etc...</Tabs.Tab>
-      </Tabs.List>
-      </Tabs> */}
+        <Tabs.List>
+          {
+            course.map((course, idx) => {
+              return (
+                <Tabs.Tab
+                  key={idx}
+                  component={Link} to="/courselanding"
+                  value={course.courseName}
+                  onClick={() => dispatch(filterCourse(course._id))}
+                >
+                  {course.courseName}
+                </Tabs.Tab>
+              );
+            })
+          }
+        </Tabs.List>
+      </Tabs>
     </>
   )
 }

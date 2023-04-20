@@ -6,6 +6,7 @@ import CourseList from "./components/CourseList";
 import CourseLanding from "./components/CourseLanding";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import CourseModule from "./components/CourseModule";
 
 import { getCourses, getUser } from "./store/actions";
 import { useEffect, useState } from 'react';
@@ -82,6 +83,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/ownedCourse" element={<OwnedCourse />} />
               <Route path="/courseForm" element={<CourseForm />} />
+              <Route path="/coursemodule" element={<CourseModule />} />
             </Routes>
             <Footer />
           </Router>

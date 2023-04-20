@@ -2,7 +2,7 @@ let initialState = [];
 
 const courseReducer = (state = initialState, action) => {
   const { type, payload } = action;
-  switch (action.type) {
+  switch (type) {
     case 'SET-COURSES':
       return payload
     case 'FILTER-COURSE':
