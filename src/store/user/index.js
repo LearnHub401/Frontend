@@ -1,23 +1,14 @@
-let initialState = {
-  userName: 'Martin Hansen',
-  _id: 'testid',
-  password: 'pass1234',
-  email: 'marrtt1234@gmail.com',
-  courses: [
-    'test course _id',
-  ],
-  activeCourses: [
-    {
-      courseId: 'test course _id',
-      complete: false,
-    }
-  ],
-}
+let initialState = {};
 
 const userReducer = (state = initialState, action) => {
+  
+  // eslint-disable-next-line no-unused-vars
+  const { type, payload } = action;
+
   switch (action.type) {
-    case 'Test':
-      return state;
+    case 'SET-USER':
+      initialState = payload
+      return payload
     default:
       return state;
   }

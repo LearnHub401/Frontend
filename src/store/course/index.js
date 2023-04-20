@@ -1,29 +1,13 @@
-let initialState = {
-    courseName: 'Data structures',
-    owner: 'testid_martin',
-    _id: 'uid',
-    description: 'Learn Data',
-    modules: [
-      {
-        name: 'Array',
-        idx: '1',
-        lessonText: 'Youre dumb if you dont know what an array is',
-        lessonImg: 'str',
-        questions: [
-          {
-            questionTxt: 'Q1',
-            answer: '2',
-            answerArr: ['1', '2', '3', '4'],
-          },
-        ],
-      },
-    ],
-}
+let initialState = [];
 
 const courseReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'Test':
-      return state;
+  const { type, payload } = action;
+  switch (type) {
+    case 'SET-COURSES':
+      initialState = payload
+      return payload
+    // case 'FILTER-COURSE':
+    //   return state.filter(e => e._id === payload)
     default:
       return state;
   }
