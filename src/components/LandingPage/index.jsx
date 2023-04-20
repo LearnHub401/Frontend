@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import { Tabs } from "@mantine/core";
+import { Drawer, Button, Group, Tabs, ActionIcon } from "@mantine/core";
 import { useSelector, useDispatch } from "react-redux";
 import { filterCourse, getCourses } from "../../store/actions";
 
 import { useEffect } from "react";
+import { useDisclosure } from '@mantine/hooks';
+import { IconArrowBarRight } from '@tabler/icons-react';
+import { IconSquareChevronRight } from '@tabler/icons-react';
 //-*******************************************************************************************************
-import { createStyles, Container, Title, Text, Button, rem } from '@mantine/core';
+import { createStyles, Container, Title, Text, rem } from '@mantine/core';
 const useStyles = createStyles((theme) => ({
   root: {
     backgroundColor: '#11284b',
@@ -83,9 +86,11 @@ const useStyles = createStyles((theme) => ({
 const LandingPage = () => {
   const { course } = useSelector((state) => state)
   const dispatch = useDispatch();
+
   //-*******************************************************************************************************
+  const [opened, { open, close }] = useDisclosure(false);
   const { classes } = useStyles();
-//-*******************************************************************************************************
+  //-*******************************************************************************************************
 
   useEffect(() => {
     dispatch(getCourses());
@@ -94,64 +99,70 @@ const LandingPage = () => {
   return (
     <>
       {/* <h1>Landing Page</h1>
-      <Link to="/courses">Explore Courses</Link>
-
-      <Tabs defaultValue="courses" orientation="vertical">
-        <Tabs.List>
-          {
-            course.map((course, idx) => {
-              return (
-                <Tabs.Tab
-                  key={idx}
-                  component={Link} to="/courselanding"
-                  value={course.courseName}
-                  onClick={() => dispatch(filterCourse(course._id))}
-                >
-                  {course.courseName}
-                </Tabs.Tab>
-              );
-            })
-          }
-        </Tabs.List>
-      </Tabs> */}
+      <Link to="/courses">Explore Courses</Link> */}
+      <Button onClick={open} variant="light" rightIcon={<IconArrowBarRight />}>My Courses</Button>
+      <ActionIcon color="blue" size="xl" variant="subtle" onClick={open}>
+        <IconSquareChevronRight size="3rem" />
+      </ActionIcon>
+      <Drawer opened={opened} onClose={close}>
+        <Drawer.Title style={{ fontSize: "2em", marginBottom: '10px' }}>My Courses</Drawer.Title>
+        <Tabs defaultValue="courses" orientation="vertical" variant="pills" radius="md">
+          <Tabs.List>
+            {
+              course.map((course, idx) => {
+                return (
+                  <Tabs.Tab
+                    key={idx}
+                    component={Link} to="/courselanding"
+                    value={course.courseName}
+                    onClick={() => dispatch(filterCourse(course._id))}
+                  >
+                    {course.courseName}
+                  </Tabs.Tab>
+                );
+              })
+            }
+          </Tabs.List>
+        </Tabs>
+      </Drawer>
       {/* //-******************************************************************************************************* */}
       <div className={classes.root}>
-      <Container size="lg">
-        <div className={classes.inner}>
-          <div className={classes.content}>
-            <Title className={classes.title}>
-            Unlock Your{' '}
-              <Text
-                component="span"
-                inherit
+        <Container size="lg">
+          <div className={classes.inner}>
+            <div className={classes.content}>
+              <Title className={classes.title}>
+                Unlock Your{' '}
+                <Text
+                  component="span"
+                  inherit
+                  variant="gradient"
+                  gradient={{ from: 'pink', to: 'yellow' }}
+                >
+                  Potential
+                </Text>{' '}
+                with LearnHub: Empower, Educate, Excel!
+              </Title>
+
+              <Text className={classes.description} mt={30}>
+                Our mission at LearnHub is to provide free and accessible online learning for all, fostering lifelong learning, empowering individuals to acquire knowledge, skills, and opportunities to thrive in a changing world, and promoting inclusivity, diversity, and personal growth.
+              </Text>
+
+              <Button
                 variant="gradient"
                 gradient={{ from: 'pink', to: 'yellow' }}
+                size="xl"
+                className={classes.control}
+                mt={40}
+                component={Link}
+                to="/courses"
               >
-                Potential
-              </Text>{' '}
-              with LearnHub: Empower, Educate, Excel!
-            </Title>
-
-            <Text className={classes.description} mt={30}>
-            Our mission at LearnHub is to provide free and accessible online learning for all, fostering lifelong learning, empowering individuals to acquire knowledge, skills, and opportunities to thrive in a changing world, and promoting inclusivity, diversity, and personal growth.
-            </Text>
-
-            <Button
-              variant="gradient"
-              gradient={{ from: 'pink', to: 'yellow' }}
-              size="xl"
-              className={classes.control}
-              mt={40}
-              component={Link} 
-              to="/courses"
-            >
-              Explore Courses
-            </Button>
+                Explore Courses
+              </Button>
+            </div>
           </div>
-        </div>
-      </Container>
-    </div>
-    {/* //-******************************************************************************************************* */}
+        </Container>
+      </div>
+      {/* //-******************************************************************************************************* */}
     </>
   )
 }
