@@ -19,6 +19,6 @@ Learnhub is a full-stack application created to provide a web platform that allo
 ## Process and Documentation
 
 [Team Agreement](/team-agreement.md)  
-[Software Requirements](/software-requirements)  
+[Software Requirements](/software-requirements.md)  
 
 ![Learnhub UML](./public/LearnhubUML.png)
