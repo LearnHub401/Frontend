@@ -18,7 +18,7 @@ const CourseLanding = () => {
             >
               <Card.Section>
                 <Image
-                  src={`https://source.unsplash.com/random?${activeCourse.courseName}`}
+                  src={activeCourse?.img_Url || `https://source.unsplash.com/random?${activeCourse.courseName}`}
                   height={800}
                 />
               </Card.Section>

@@ -12,7 +12,7 @@ const ModuleForm = (props) => {
     initialValues: {
       name: '',
       lessonText: '',
-      imgUrl: '',
+      img_Url: '',
       questionTxt: '',
       answer1: '',
       answer2: '',
@@ -32,7 +32,7 @@ const ModuleForm = (props) => {
         ...activeCourse, modules: [...activeCourse.modules, {
           name: values.name,
           lessonText: values.lessonText,
-          imgUrl: values.imgUrl,
+          img_Url: values.img_Url,
           questions: [{
             questionTxt: values.questionTxt,
             answer: values.answer,
@@ -60,7 +60,7 @@ const ModuleForm = (props) => {
           <TextInput
             label="Image"
             placeholder="Image URL"
-            {...form.getInputProps('imgUrl')}
+            {...form.getInputProps('img_Url')}
           />
           <TextInput
             label="Question"

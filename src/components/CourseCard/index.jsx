@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import { filterCourse } from "../../store/actions";
 
 
-
 const CourseCard = (props) => {
   const dispatch = useDispatch();
-
   return (
     <>
     <Grid.Col key={`course-${props.idx}`} md={6} lg={3} style={{marginTop: '2rem'}}>
@@ -20,7 +18,7 @@ const CourseCard = (props) => {
       >
         <Card.Section>
           <Image
-            src={`https://source.unsplash.com/random?${props.course.courseName}`}
+            src={props.course.img_Url || `https://source.unsplash.com/random?${props.course.courseName}`}
             height={160}
           />
         </Card.Section>
