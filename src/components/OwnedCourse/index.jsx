@@ -7,59 +7,68 @@ import ModuleForm from "../ModuleForm";
 const OwnedCourse = () => {
   const { activeCourse, user } = useSelector((state) => state);
   const [moduleToggle, setModuleToggle] = useToggle([false, true]);
-  
+  console.log(activeCourse, user);
+
   return (
-      <>
-        {activeCourse?.owner_id === user?._id ?
-          <>
-            <h1>Owned Courses</h1>
-            <Card
-              shadow="sm"
-              padding="xl"
-            >
-              <Card.Section>
-                <Image
-                  src={`https://source.unsplash.com/random?${activeCourse.courseName}`}
-                  height={160}
-                />
-              </Card.Section>
+    <>
+      {activeCourse?.owner_id === user?._id ?
+        <>
+          <Card
+            shadow="lg"
+            padding="xl"
+          >
+            <Card.Section>
+              <Image
+                src={activeCourse?.img_Url || `https://source.unsplash.com/random?${activeCourse.courseName}`}
+                height={800}
+              />
+            </Card.Section>
 
-              <Text weight={500} size="lg" mt="md">
-                {activeCourse.courseName}
-              </Text>
+            <Text weight={500} size={60} mt="md">
+              {activeCourse.courseName}
+            </Text>
 
-              <Text mt="xs" color="dimmed" size="sm">
-                {activeCourse.description}
-              </Text>
-            </Card>
-            {activeCourse.modules?.map((module) => {
-              return (
-                <Card>
-                  <Text weight={500} size="lg" mt="md">
-                    {module.name}
-                  </Text>
-                  <Text size="sm" mt="xs">
-                    {module.lessonText}
-                  </Text>
-                  {module.questions?.map((question) => {
-                    return (
-                      <Card>
-                        <Text>
-                          <p>Question: {question.questionTxt}</p>
-                          <p>Answer: {question.answer}</p>
-                          <p>Answers: {question.answerArr.map(elem => <p>{elem}</p>)}</p>
-                        </Text>
-                      </Card>
-                    )
-                  })}
-                  {/* {questionToggle? <p>Question Form</p> : <Button onClick={setQuestionToggle}>Add Question</Button>} */}
-                </Card>
-              )
-            })}
-            {moduleToggle ? <ModuleForm setModuleToggle={setModuleToggle} /> : <Button onClick={setModuleToggle}>Add Module</Button>}
-          </> : user?.activeCourses?.includes(activeCourse._id) ? <Navigate to='/courseModule' replace /> : <Navigate to='/' replace />
-        }
-      </>
+            <Text mt="xs" color="dimmed" size={30}>
+              {activeCourse.description}
+            </Text>
+          </Card>
+          {activeCourse.modules?.map((module) => {
+            return (
+              <Card shadow="sm" radius="md" padding="lg" withBorder>
+                <Text size={25} fw={500} weight={500} mt="md">
+                  {module.name}
+                </Text>
+                <Text size={22} mt="xs">
+                  Lesson: {module.lessonText}
+                </Text>
+                {module.questions?.map((question) => {
+                  return (
+                    <Card>
+                      <Text size={18}>
+                        Question: {question.questionTxt}
+                      </Text>
+                      <Text>
+                        Answer: {question.answer}
+                      </Text>
+                      <Text>
+                        Answers: {question.answerArr.map(elem => <>{elem},  </>)}
+                      </Text>
+                    </Card>
+                  )
+                })}
+                {/* {questionToggle? <p>Question Form</p> : <Button onClick={setQuestionToggle}>Add Question</Button>} */}
+              </Card>
+            )
+          })}
+          {moduleToggle ? <ModuleForm setModuleToggle={setModuleToggle} /> :
+            <Button
+              variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size="xl"
+              mt={40} onClick={setModuleToggle}>Add Module</Button>}
+        </> : user?.activeCourses?.includes(activeCourse._id) ? <Navigate to='/courseModule' replace /> : <Navigate to='/' replace />
+      }
+    </>
   )
 }
 

@@ -1,7 +1,6 @@
-import { Box, Group, TextInput } from "@mantine/core"
+import { Box, Group, TextInput, Textarea, Button } from "@mantine/core"
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";
-import { Button } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
 import { addCourse, getUser, updateCourse } from "../../store/actions";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -23,7 +22,7 @@ const CourseForm = (props) => {
     initialValues: {
       courseName: '',
       description: '',
-      imgUrl: '',
+      img_Url: '',
     },
     validate: {
       courseName: (value) => (value.length < 1 ? 'Required' : null),
@@ -43,14 +42,14 @@ const CourseForm = (props) => {
   return (
     (isAuthenticated ?
     <>
-      <Box maw={300} mx="auto">
+      <Box  style={{ borderRadius: 10}} maw={300} mx="auto">
         <form onSubmit={form.onSubmit((values) => {handleSubmit(values)})}>
           <TextInput
             label="Course Name"
             placeholder="Course Name"
             {...form.getInputProps('courseName')}
           />
-          <TextInput
+          <Textarea
             label="Description"
             placeholder="Course Description"
             {...form.getInputProps('description')}
@@ -58,10 +57,16 @@ const CourseForm = (props) => {
           <TextInput
             label="Image"
             placeholder="Image URL"
-            {...form.getInputProps('imgUrl')}
+            {...form.getInputProps('img_Url')}
           />
           <Group position="right" mt="md">
-            <Button type="submit">Submit</Button>
+            <Button 
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow' }}
+                size="md"
+                mt={40}
+                type="submit">Submit
+            </Button>
           </Group>
         </form>
       </Box>

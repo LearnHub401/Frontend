@@ -1,6 +1,6 @@
-import { Box, Group, TextInput } from "@mantine/core"
+import { Textarea, Box, Group, TextInput, Button, Stack, Text } from "@mantine/core"
 import { useForm } from "@mantine/form";
-import { Button } from "react-bootstrap"
+
 import { useDispatch, useSelector } from "react-redux";
 import { updateCourse } from "../../store/actions";
 
@@ -12,7 +12,7 @@ const ModuleForm = (props) => {
     initialValues: {
       name: '',
       lessonText: '',
-      imgUrl: '',
+      img_Url: '',
       questionTxt: '',
       answer1: '',
       answer2: '',
@@ -32,7 +32,7 @@ const ModuleForm = (props) => {
         ...activeCourse, modules: [...activeCourse.modules, {
           name: values.name,
           lessonText: values.lessonText,
-          imgUrl: values.imgUrl,
+          img_Url: values.img_Url,
           questions: [{
             questionTxt: values.questionTxt,
             answer: values.answer,
@@ -52,7 +52,7 @@ const ModuleForm = (props) => {
             placeholder="Module Name"
             {...form.getInputProps('name')}
           />
-          <TextInput
+          <Textarea
             label="Lesson Text"
             placeholder="Lesson"
             {...form.getInputProps('lessonText')}
@@ -60,40 +60,42 @@ const ModuleForm = (props) => {
           <TextInput
             label="Image"
             placeholder="Image URL"
-            {...form.getInputProps('imgUrl')}
+            {...form.getInputProps('img_Url')}
           />
           <TextInput
             label="Question"
             placeholder="question"
             {...form.getInputProps('questionTxt')}
           />
-          <TextInput
-            label="Answers"
+          <Stack align= 'start'>
+            <Text>Answers:</Text>
+          <TextInput 
             placeholder="1st answer"
             {...form.getInputProps('answer1')}
           />
-          <TextInput
-            label="Answers"
+          <TextInput 
             placeholder="2st answer"
             {...form.getInputProps('answer2')}
           />
-          <TextInput
-            label="Answers"
+          <TextInput 
             placeholder="3st answer"
             {...form.getInputProps('answer3')}
           />
-          <TextInput
-            label="Answers"
+          <TextInput 
             placeholder="4st answer"
             {...form.getInputProps('answer4')}
           />
-          <TextInput
+          </Stack>
+          <TextInput 
             label="Correct Answer"
             placeholder="Correct Answer"
             {...form.getInputProps('answer')}
           />
           <Group position="right" mt="md">
-            <Button type="submit">Submit</Button>
+            <Button variant="gradient"
+              gradient={{ from: 'pink', to: 'yellow' }}
+              size="md"
+              mt={40} type="submit">Submit</Button>
           </Group>
         </form>
       </Box>
