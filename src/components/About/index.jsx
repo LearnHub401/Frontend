@@ -47,7 +47,7 @@ const About = () => {
     </Text>
     <div  style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gridGap: 16 }}>
       <TeamMember style={dark? lightAbt : darkAbt} name="John Smith" title="CEO" imageSrc="https://picsum.photos/200/300" />
-      <TeamMember style={dark? lightAbt : darkAbt} name="Shadow." title="Stylish Bandit Slayer" words="私の名前は影です。 影を狩るために影に潜む者" imageSrc="https://ayther.fr/wp-content/uploads/2023/02/the-eminence-in-shadow-saison-2.webp" />
+      <TeamMember style={dark? lightAbt : darkAbt} name="Shadow." title="Stylish Bandit Slayer " words="私の名前は影です。 影を狩るために影に潜む者" imageSrc="https://ayther.fr/wp-content/uploads/2023/02/the-eminence-in-shadow-saison-2.webp" />
       <TeamMember style={dark? lightAbt : darkAbt} name="Bob Johnson" title="CFO" imageSrc="https://picsum.photos/200/302" />
       <TeamMember style={dark? lightAbt : darkAbt} name="Alice Williams" title="COO" imageSrc="https://picsum.photos/200/303" />
     </div>
