@@ -75,22 +75,23 @@ const CourseModule = () => {
     <>
       <Card>
         <Card.Section>
-          <Text>
+          <Text style={{ marginLeft: '1rem' }}>
             {`${activeCourse.courseName}: ${module?.name || 'complete'}`}
           </Text>
           <Image
+            style={{ marginLeft: '1rem' }}
             src={module?.img_Url || 'https://source.unsplash.com/random?complete'}
             height={500}
           />
-          <Text mt="xs" color="dimmed" size="sm">
+          <Text mt="xs" color="dimmed" size="sm" style={{ marginLeft: '1rem' }}>
             {module?.name || 'Actually... your done with this course.'}
           </Text>
-          <Text>
+          <Text style={{ marginLeft: '3rem' }}>
             {module?.lessonText}
           </Text>
         </Card.Section>
 
-        <Card.Section>
+        <Card.Section style={{ marginLeft: '1rem' }} >
           {selectedOption && (module?.questions[currentQuestion].answer === selectedOption ? <Badge color="green">CORRECT</Badge> : <Badge color="red">INCORRECT</Badge>)}
           <Text weight={500} size="lg" mt="md">
             {module?.questions[currentQuestion].questionTxt || 'There are no more questions.'}
