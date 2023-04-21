@@ -1,4 +1,4 @@
-import { Card, Text, Group, Grid, Center, Button } from "@mantine/core";
+import { Card, Text, Grid, Center, Button } from "@mantine/core";
 import { Image } from "react-bootstrap";
 import AuthButtons from "../AuthButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,7 @@ const Profile = () => {
     (isAuthenticated ?
       <>
         <Center>
-          <Card shadow="md" padding="lg" radius="md" style={{ width: '12%', height: '20%' }} withBorder>
+          <Card shadow="md" padding="lg" radius="md" style={{ width: '12%', height: '20%', marginTop:'1.5rem' }} withBorder>
             <Image variant="top" src={user.picture} alt={user.name} style={{ width: '100%' }} />
             <Text id="name">{state.user.userName}</Text>
             <Text id="email">{state.user.email}</Text>
@@ -35,8 +35,8 @@ const Profile = () => {
             </Center>
           </Card>
         </Center>
-        <Text weight={500} size={40} sx={{marginTop: '1rem'}}>Active Courses:</Text>
-        <Grid sx={{marginLeft: '2rem'}}>
+        <Text weight={500} size={40} sx={{marginTop: '1rem', marginLeft: '1rem'}}>Active Courses:</Text>
+        <Grid sx={{marginLeft: '3rem'}}>
           {
             state?.user?.activeCourses?.length ?
               state.user.activeCourses.map((courseId, idx) => {
@@ -48,8 +48,8 @@ const Profile = () => {
               }) : <Text weight={500} size={30}>You're not enrolled in any classes</Text>
           }
         </Grid>
-        <Text weight={500} size={40} sx={{marginTop: '1rem'}}>Your Courses:</Text>
-        <Grid sx={{marginLeft: '2rem'}}>
+        <Text weight={500} size={40} sx={{marginTop: '1rem', marginLeft: '1rem'}}>Your Courses:</Text>
+        <Grid sx={{marginLeft: '3rem'}}>
           {
             state?.user?.courses?.length ?
               state.user.courses.map((courseId, idx) => {
@@ -65,10 +65,10 @@ const Profile = () => {
           <Button 
             variant="gradient"
             gradient={{ from: 'pink', to: 'yellow' }}
-            size={69}
+            size={40}
             mt={40}
             radius={25}
-            sx={{padding: '2rem'}}
+            sx={{padding: '2rem', marginBottom: '1.5rem'}}
             component={Link} to="/courseForm">Create Course</Button>
         </Center>
       </> : <AuthButtons />)

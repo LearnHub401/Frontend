@@ -11,7 +11,7 @@ const CourseList = () => {
   const dispatch = useDispatch();
   const [activePage, setPage] = useState(1);
 
-  const amountToDisplay = 12;
+  const amountToDisplay = 8;
 
   const courseToRender = course;
   const listStart = amountToDisplay * (activePage - 1);

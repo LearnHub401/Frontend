@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Card, Grid, Image, Text} from "@mantine/core";
+import { Card, Grid, Image, Text, ScrollArea} from "@mantine/core";
 import { useDispatch } from "react-redux";
 import { filterCourse } from "../../store/actions";
 
@@ -28,10 +28,14 @@ const CourseCard = (props) => {
         <Text weight={500} size="lg" mt="md">
           {props.course.courseName}
         </Text>
-
-        <Text mt="xs" color="dimmed" size="sm">
+        <ScrollArea 
+        h={100} 
+        type="always"
+        >
+        <Text mt="xs" color="dimmed" size="sm" style={{marginRight:'1rem'}}>
           {props.course.description}
         </Text>
+        </ScrollArea>
       </Card>
     </Grid.Col>
     </>
