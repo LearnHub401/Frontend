@@ -2,9 +2,11 @@ import { Card, Image, Text, Button } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { addEnrolledCourse } from "../../store/actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CourseLanding = () => {
   const { activeCourse, user } = useSelector((state) => state);
+  const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
 
   return (
@@ -31,6 +33,7 @@ const CourseLanding = () => {
                 {activeCourse.description}
               </Text>
             </Card>
+            {isAuthenticated ? 
             <Button
               variant="gradient"
               gradient={{ from: 'pink', to: 'yellow' }}
@@ -38,7 +41,7 @@ const CourseLanding = () => {
               mt={40}
               radius={16}
               sx={{ paddingLeft: '4rem', paddingRight: '4rem'}}
-              onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button>
+              onClick={() => dispatch(addEnrolledCourse(activeCourse._id, user.email))}>Start</Button> : <></>}
           </>
       }
     </>
